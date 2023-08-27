@@ -18,8 +18,8 @@ namespace Prueba.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpGet(Name = "GetWeatherForecast")]    //Ejemplo de EndPoint
+        public IEnumerable<WeatherForecast> Get(string nombre, string apellido)
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
