@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Prueba.Entities;
 using Prueba.DTOs;
+using System.ComponentModel.DataAnnotations;
 
 namespace Prueba.Controllers
 {
@@ -10,19 +11,39 @@ namespace Prueba.Controllers
     public class LoginController : ControllerBase
     {
 
+        //[AllowAnonymous] = puede entrar cualquier persona
+        //[Authorize] = recibe JWT para validar el uso de la API
+        //Irian abajo del verbo http
+
+        /// <summary>
+        /// Obtiene todos los usuarios
+        /// </summary>
+        /// <param name="todos">Valor booleano</param>
+        /// <returns>Todos los usuarios</returns>
         [HttpGet]
         [Route("Usuarios")]
         public IActionResult Usuarios(bool todos)
         {
-            if (todos)
+            try  //En el try pongo todo la logica y en el catch iria lo que devuelve si rompe algo de la logica dentro del try
             {
-                return Ok("Todos los usuarios");
+                if (todos)
+                {
+                    return Ok("Todos los usuarios");
+                }
+                else
+                {
+                    return Ok("Un usuario");
+                }
             }
-            else
+            catch (Exception ex)  //Lo ideal en el catch es hacer un Log que devuelva la excepcion
             {
-                return Ok("Un usuario");
+                //Log (ex.Message)
+                return BadRequest("Contacte a sistemas");
             }
+
         }
+
+
 
 
         [HttpPost]    
@@ -36,6 +57,7 @@ namespace Prueba.Controllers
             {
                 return Unauthorized("Usuario o Clave Erronea");
             }
+            
         }
 
 
