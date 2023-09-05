@@ -10,7 +10,7 @@ namespace Prueba.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-
+          
         //[AllowAnonymous] = puede entrar cualquier persona
         //[Authorize] = recibe JWT para validar el uso de la API
         //Irian abajo del verbo http
