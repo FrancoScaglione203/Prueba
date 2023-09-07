@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Prueba.Entities;
 using Prueba.DTOs;
 using System.ComponentModel.DataAnnotations;
+using Serilog;
 
 namespace Prueba.Controllers
 {
@@ -28,6 +29,7 @@ namespace Prueba.Controllers
             {
                 if (todos)
                 {
+                    Log.Information("Prueba de Log");
                     return Ok("Todos los usuarios");
                 }
                 else

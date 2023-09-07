@@ -1,3 +1,9 @@
+using Prueba.DataAccess;
+using Microsoft.EntityFrameworkCore;
+using Serilog;
+
+
+
 namespace Prueba
 {
     public class Program
@@ -12,6 +18,11 @@ namespace Prueba
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseSqlServer("name=defaultConnection");
+            });
 
             var app = builder.Build();
 

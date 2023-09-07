@@ -14,7 +14,7 @@ namespace Prueba.DataAccess.DataBaseSeeding
                     FirstName = "Franco",
                     LastName = "Scaglione",
                     Email = "fscaglione@gmail.com",
-                    Password = "1234",
+                    Password = "1234"
                 });
         }
     }
