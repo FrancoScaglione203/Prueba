@@ -2,7 +2,7 @@
 
 namespace Prueba.DataAccess.Repositories.Interfaces
 {
-    public interface IUserRepository //: IRespository<User>
+    public interface IUserRepository : IRepository<User>
     {
     }
 }

@@ -14,7 +14,8 @@ namespace Prueba.DataAccess.Repositories
 
         public virtual async Task<List<T>> GetAll()
         {
-            return await _context.Set<T>().ToListAsync();
+            var prueba = await _context.Set<T>().ToListAsync();
+            return prueba;
         }
     }
 }
