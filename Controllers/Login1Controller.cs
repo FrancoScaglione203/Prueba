@@ -9,7 +9,7 @@ namespace Prueba.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LoginController : ControllerBase
+    public class Login1Controller : ControllerBase
     {
           
         //[AllowAnonymous] = puede entrar cualquier persona

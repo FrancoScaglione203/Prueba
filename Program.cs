@@ -1,8 +1,7 @@
 using Prueba.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-
-
+using Prueba.Services;
 
 namespace Prueba
 {
@@ -11,7 +10,8 @@ namespace Prueba
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            Log.Logger = new LoggerConfiguration().Enrich.FromLogContext().ReadFrom.Configuration(builder.Configuration).CreateLogger();
+            builder.Host.UseSerilog(Log.Logger);
             // Add services to the container.
 
             builder.Services.AddControllers();
@@ -23,6 +23,10 @@ namespace Prueba
             {
                 options.UseSqlServer("name=defaultConnection");
             });
+
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWorkService>();  
+
+
 
             var app = builder.Build();
 
