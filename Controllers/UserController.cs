@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Prueba.Entities;
 using Prueba.Services;
 
@@ -16,6 +17,7 @@ namespace Prueba.Controllers
 
 
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<User>>> GetAll()
         {
             var users = await _unitOfWork.UserRepository.GetAll();
